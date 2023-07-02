@@ -1,0 +1,20 @@
+#slider {
+  margin-top: 2%;
+  -webkit-appearance: none;
+  width: 50%;
+  height: 15px;
+  border-radius: 5px;  
+  background: white;
+  outline: none;
+  cursor: pointer;
+}
+
+#slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: var(--main);
+  cursor: pointer;
+}

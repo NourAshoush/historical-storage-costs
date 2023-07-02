@@ -1,0 +1,29 @@
+#input-box {
+  margin: 0 auto;
+  margin-top: 2%;
+  width: 50%;
+  border: none;
+  font-size: 2rem;
+  color: var(--main);
+}
+
+#input-box::placeholder {
+  color: var(--light);
+  opacity: 1;
+}
+
+#input-box:-ms-input-placeholder {
+  color: var(--light);
+}
+
+#input-box::-ms-input-placeholder {
+  color: var(--light);
+}
+
+#byte-display {
+  margin: 0 auto;
+  margin-top: 0.25%;
+  width: 50%;
+  text-align: center;
+  font-size: 1.5rem;
+}
