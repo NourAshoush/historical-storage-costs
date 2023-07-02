@@ -1,0 +1,32 @@
+#header-bar {
+  display: flex;
+  flex-direction: row;
+  background: white;
+  height: 5vh;
+  margin-top: 0;
+}
+
+.tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  border-radius: 20px 20px 0 0;
+  cursor: pointer;
+}
+
+#cost-text {
+  color: #FF6666;
+}
+
+#cost-file {
+  color: #8AB187;
+}
+
+.active {
+  font-size: 1.5rem;
+  background-color: var(--background);
+
+  transition: all 0.2s ease;
+}
