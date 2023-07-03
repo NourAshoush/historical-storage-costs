@@ -13,11 +13,12 @@ function HeaderBar({ onToggle }: HeaderBarProps) {
     if (isRedActive) {
       ((document.getElementById("cost-text")) as HTMLElement).classList.add("active");
       ((document.getElementById("cost-file")) as HTMLElement).classList.remove("active");
+      document.documentElement.classList.remove("green-mode");
     } else {
       ((document.getElementById("cost-text")) as HTMLElement).classList.remove("active");
       ((document.getElementById("cost-file")) as HTMLElement).classList.add("active");
+      document.documentElement.classList.add("green-mode");
     }
-    document.documentElement.classList.toggle("green-mode");
     onToggle();
   }, [isRedActive]);
 
