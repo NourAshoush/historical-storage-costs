@@ -5,15 +5,15 @@ import HeaderBar from "./components/HeaderBar/HeaderBar";
 import InputBox from "./components/InputBox/InputBox";
 import Slider from "./components/Slider/Slider";
 import Results from "./components/Results/Results";
-// import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [inputBytes, setInputBytes] = useState(0);
   const [yearDate, setYearDate] = useState(1956);
-  const [isRedActive, setIsRedActive] = useState(true);
+  const [activeMode, setActiveMode] = useState("text");
 
-  const handleModeToggle = () => {
-    setIsRedActive(!isRedActive);
+  const handleModeToggle = (mode: string) => {
+    setActiveMode(mode);
     setInputBytes(0);
   };
 
@@ -29,10 +29,10 @@ function App() {
     <>
       <HeaderBar onToggle={handleModeToggle} />
       <h1 id="title">
-        {!isRedActive ? "Cost To Store Text" : "Cost To Store Files"}
+        {activeMode === "text" ? "Cost To Store Text" : "Cost To Store Files"}
       </h1>
 
-      {!isRedActive ? <InputBox onNewInput={handleNewInput} /> : <></>}
+      {activeMode === "text" ? <InputBox onNewInput={handleNewInput} /> : <></>}
 
       <Slider onYearChange={handleYearChange} />
 
@@ -41,10 +41,16 @@ function App() {
       {inputBytes != 0 ? (
         <Results inputBytes={inputBytes} yearDate={yearDate} />
       ) : (
-        <p id="enter-text">Enter text above to see how much it would cost</p>
+        <p id="enter-text">
+          Enter text above to see how much it would cost
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+        </p>
       )}
 
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
