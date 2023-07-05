@@ -5,17 +5,23 @@ function Information() {
     <>
       <p id="info-desc">
         The historical costs of disk storage have been adapted from{" "}
-        <a href="https://ourworldindata.org/grapher/historical-cost-of-computer-memory-and-storage">
+        <a
+          href="https://ourworldindata.org/grapher/historical-cost-of-computer-memory-and-storage"
+          target="_blank"
+        >
           Our World in Data
         </a>
         . Costs are depicted as $/TB for each year. The costs in this source
-        have not been adjusted for inflation.
-      </p>
-      <button type="button" className="btn btn-danger download">
-        <a href="https://raw.githubusercontent.com/NourAshoush/historical-storage-costs/main/src/assets/Color%20Hunt%20Palette%20ffeaddfcaeaeff8989ff6666.png">
-          Download CSV
+        have not been adjusted for inflation, however, the costs on this site
+        have been adjusted for inflation using based on data from {" "}
+        <a
+          href="https://www.officialdata.org/us/inflation/1956?endYear=2022"
+          target="_blank"
+        >
+          Official Data
         </a>
-      </button>
+        .
+      </p>
     </>
   );
 }
