@@ -2,7 +2,7 @@
 <html lang="en" style="width: 100%; height: 100%; margin: 0">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/historical-storage-costs/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/historical-storage-costs/assets/Logo-a36a6a39.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,8 +11,8 @@
       rel="stylesheet"
     />
     <title>Historical Data Costs</title>
-    <script type="module" crossorigin src="/historical-storage-costs/assets/index-20ff66d4.js"></script>
-    <link rel="stylesheet" href="/historical-storage-costs/assets/index-cdea38c1.css">
+    <script type="module" crossorigin src="/historical-storage-costs/assets/index-55faa98e.js"></script>
+    <link rel="stylesheet" href="/historical-storage-costs/assets/index-4a15e37e.css">
   </head>
   <body>
     <div id="root"></div>
@@ -24,6 +24,14 @@
       --light: #fcaeae;
       --background: #ffeadd;
       --main: #ff6666;
+
+      --redlight: #fcaeae;
+      --redbackground: #ffeadd;
+      --redmain: #ff6666;
+
+      --greenlight: #cee0a9;
+      --greenbackground: #edfbcf;
+      --greenmain: #8ab187;
     }
 
     .green-mode {
@@ -38,6 +46,8 @@
       width: 100%;
       height: 100%;
       margin: 0;
+
+      transition: background-color 0.2s ease;
     }
 
     h1,
@@ -45,6 +55,7 @@
     h3,
     p {
       color: var(--main);
+      transition: color 0.2s ease;
     }
 
     p {
