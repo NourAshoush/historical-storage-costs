@@ -14,19 +14,29 @@
   height: 100%;
   border-radius: 20px 20px 0 0;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 #cost-text {
-  color: #FF6666;
+  color: var(--redmain);
+}
+
+.tab:hover#cost-text {
+  background-color: var(--redbackground);
 }
 
 #cost-file {
-  color: #8AB187;
+  color: var(--greenmain);
+}
+
+.tab:hover#cost-file {
+  background-color: var(--greenbackground);
 }
 
 .active {
   font-size: 1.5rem;
   background-color: var(--background);
+  cursor: default;
 
   transition: all 0.2s ease;
 }
