@@ -8,6 +8,8 @@ interface ResultsProps {
 
 function Results({ inputBytes, yearDate }: ResultsProps) {
     const [cost, setCost] = useState("0");
+    const [costFormatted, setCostFormatted] = useState("0");
+    const [bytesFormatted, setBytesFormatted] = useState("0");
 
     // 1956 - 2022
     const yearIndex = yearDate - 1956;
@@ -32,6 +34,35 @@ function Results({ inputBytes, yearDate }: ResultsProps) {
         9.5151, 9.9621, 10.7594, 11.1811,
     ];
 
+    // this function will format the bytes to be more readable
+    useEffect(() => {
+        const units = ["B", "KB", "MB", "GB", "TB"];
+        let index = 0;
+        let bytes = inputBytes;
+        while (bytes >= 1000) {
+            bytes /= 1000;
+            index++;
+        }
+        if (index >= units.length) {
+            index = units.length - 1;
+        }
+        const result = bytes.toFixed(2) + " " + units[index];
+        setBytesFormatted(result);
+    }, [inputBytes]);
+
+    useEffect(() => {
+        const [integerPart, decimalPart] = cost.split(".");
+        const formattedIntegerPart = integerPart.replace(
+            /\B(?=(\d{3})+(?!\d))/g,
+            ","
+        );
+        const result = decimalPart
+            ? `${formattedIntegerPart}.${decimalPart}`
+            : formattedIntegerPart;
+        setCostFormatted(result);
+    }, [cost]);
+
+
     useEffect(() => {
         const trillion = 1e12;
         const costWithInflation =
@@ -40,16 +71,16 @@ function Results({ inputBytes, yearDate }: ResultsProps) {
 
         const result = (inputBytes * normalizedCost).toFixed(12);
         setCost(result);
+        console.log(costWithInflation, normalizedCost, result);
     }, [inputBytes, yearDate]);
 
     return (
         <>
             <div id="results-container">
                 <p>It would cost about</p>
-                <h1>{cost == "NaN" ? "Too Insignificant" : "$" + cost}</h1>
+                <h1>{cost == "NaN" ? "Too Insignificant" : "$" + costFormatted}</h1>
                 <p>
-                    to store {inputBytes} {inputBytes == 1 ? "byte" : "bytes"}{" "}
-                    in the year of {yearDate}.
+                    to store {bytesFormatted} in the year of {yearDate}.
                 </p>
             </div>
         </>

@@ -15,8 +15,9 @@ function InputFileSize({ onInputSize, onSelectUnit }: InputFileSizeProps) {
                     id="input-num-size"
                     className="form-control form-control-lg"
                     type="number"
-                    min={0}
+                    min={1}
                     placeholder="Enter File Size"
+                    defaultValue={1}
                     onChange={(e) => {onInputSize(parseInt(e.target.value));}}
                 ></input>
 

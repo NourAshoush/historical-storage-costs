@@ -13,6 +13,7 @@ function App() {
     const [yearDate, setYearDate] = useState(1956);
     const [activeMode, setActiveMode] = useState("text");
     const [unit, setUnit] = useState(0);
+    const [rawBytes, setRawBytes] = useState(1);
 
     const handleModeToggle = (mode: string) => {
         setActiveMode(mode);
@@ -28,20 +29,16 @@ function App() {
     };
 
     const handleByteInput = (bytesInt: number) => {
-        const bytes = bytesInt * unit;
-        setInputBytes(bytes);
+        setRawBytes(bytesInt);
     };
 
     const handleUnitChange = (unitInt: number) => {
-        const bytes = inputBytes * unitInt;
-        setInputBytes(bytes);
         setUnit(unitInt);
     };
 
     useEffect(() => {
-        // This code will run whenever `inputBytes` or `unit` changes.
-        console.log(inputBytes, unit);
-    }, [inputBytes, unit]);
+        setInputBytes(rawBytes * unit);
+    }, [rawBytes, unit]);
 
     return (
         <>
@@ -68,15 +65,28 @@ function App() {
             {inputBytes != 0 ? (
                 <Results inputBytes={inputBytes} yearDate={yearDate} />
             ) : (
-                <p id="enter-text">
-                    Enter text above to see how much it would cost
-                    <br></br>
-                    <br></br>
-                    <br></br>
-                    <br></br>
-                </p>
+                <>
+                    {activeMode === "text" ? (
+                        <p id="enter-data-label">
+                            Enter text above to see how much it would cost
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                        </p>
+                    ) : (
+                        <p id="enter-text">
+                            Enter details above to see how much it would cost
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                        </p>
+                    )}
+                </>
             )}
 
+            
             <Footer />
         </>
     );
