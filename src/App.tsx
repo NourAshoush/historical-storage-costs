@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import HeaderBar from "./components/HeaderBar/HeaderBar";
 import InputBox from "./components/InputBox/InputBox";
@@ -12,6 +12,7 @@ function App() {
     const [inputBytes, setInputBytes] = useState(0);
     const [yearDate, setYearDate] = useState(1956);
     const [activeMode, setActiveMode] = useState("text");
+    const [unit, setUnit] = useState(0);
 
     const handleModeToggle = (mode: string) => {
         setActiveMode(mode);
@@ -26,6 +27,22 @@ function App() {
         setYearDate(year);
     };
 
+    const handleByteInput = (bytesInt: number) => {
+        const bytes = bytesInt * unit;
+        setInputBytes(bytes);
+    };
+
+    const handleUnitChange = (unitInt: number) => {
+        const bytes = inputBytes * unitInt;
+        setInputBytes(bytes);
+        setUnit(unitInt);
+    };
+
+    useEffect(() => {
+        // This code will run whenever `inputBytes` or `unit` changes.
+        console.log(inputBytes, unit);
+    }, [inputBytes, unit]);
+
     return (
         <>
             <HeaderBar onToggle={handleModeToggle} />
@@ -38,7 +55,10 @@ function App() {
             {activeMode === "text" ? (
                 <InputBox onNewInput={handleNewInput} />
             ) : (
-                <InputFileSize />
+                <InputFileSize
+                    onInputSize={handleByteInput}
+                    onSelectUnit={handleUnitChange}
+                />
             )}
 
             <Slider onYearChange={handleYearChange} />

@@ -7,28 +7,30 @@
     margin-top: 2%;
 }
 
-#inputFileSizeNumber {
-    width: 50%;
+#input-num-size {
+    width: 20%;
     border: none;
     font-size: 2rem;
     color: var(--main);
 }
 
-#inputFileSize::placeholder {
+#input-num-size::placeholder {
     color: var(--light);
     opacity: 1;
 }
 
-#inputFileSize:-ms-input-placeholder {
+#input-num-size:-ms-input-placeholder {
     color: var(--light);
 }
 
-#inputFileSize::-ms-input-placeholder {
+#input-num-size::-ms-input-placeholder {
     color: var(--light);
 }
 
-#dropdownMenuButton {
+#input-unit-dropdown {
+    margin-left: 2%;
+    font-size: 2rem;
+    background-color: white;
     border: none;
     color: var(--main);
-    background-color: white;
 }

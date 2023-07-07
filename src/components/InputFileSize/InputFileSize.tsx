@@ -1,85 +1,39 @@
 import "./InputFileSize.css";
 
-function InputFileSize() {
-    
-    // write a function to trigger the dropdown menu
-    const triggerDropdown = () => {
-        // get the dropdown menu
-        const dropdownMenu = document.querySelector(".dropdown-menu");
-        dropdownMenu?.classList.toggle("show");
-        // get the dropdown button
-        const dropdownButton = document.querySelector(".dropdown-toggle");
-        // get the dropdown menu items
-        const dropdownMenuItems = document.querySelectorAll(".dropdown-item");
+interface InputFileSizeProps {
+    onInputSize: (bytes: number) => void;
+    onSelectUnit: (unit: number) => void;
+}
 
+function InputFileSize({ onInputSize, onSelectUnit }: InputFileSizeProps) {
 
-        // change this to get the selected dropdown item
-        dropdownMenuItems.forEach((item) => {
-            item.addEventListener("click", () => {
-                dropdownButton!.innerHTML = item.innerHTML;
-            });
-        });
-    };
-    
 
     return (
         <>
             <div className="container">
                 <input
+                    id="input-num-size"
                     className="form-control form-control-lg"
-                    id="inputFileSize"
                     type="number"
                     min={0}
-                    placeholder="Enter file size here"
+                    placeholder="Enter File Size"
+                    onChange={(e) => {onInputSize(parseInt(e.target.value));}}
                 ></input>
 
-                <div className="dropdown">
-                    <button
-                        className="btn btn-secondary btn-lg dropdown-toggle"
-                        type="button"
-                        id="dropdownMenuButton"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                        onClick={triggerDropdown}
-                    >
-                        Select Size Unit
-                    </button>
-                    <ul
-                        className="dropdown-menu"
-                        aria-labelledby="dropdownMenuButton"
-                    >
-                        <li>
-                            <option className="dropdown-item" value={1}>
-                                Bytes
-                            </option>
-                        </li>
-                        <li>
-                            <option className="dropdown-item" value={1000}>
-                                Kilobytes
-                            </option>
-                        </li>
-                        <li>
-                            <option className="dropdown-item" value={1000000}>
-                                Megabytes
-                            </option>
-                        </li>
-                        <li>
-                            <option className="dropdown-item" value={1000000000}>
-                                Gigabytes
-                            </option>
-                        </li>
-                        <li>
-                            <option className="dropdown-item" value={1000000000000}>
-                                Terabytes
-                            </option>
-                        </li>
-                        <li>
-                            <option className="dropdown-item" value={1000000000000000}>             
-                                Petabytes
-                            </option>
-                        </li>
-                    </ul>
-                </div>
+                <select
+                    className="btn btn-secondary btn-lg dropdown-toggle"
+                    id="input-unit-dropdown"
+                    onChange={(e) => {onSelectUnit(parseInt(e.target.value))}}
+                >
+                    <option value={0} defaultChecked>
+                        Select Unit
+                    </option>
+                    <option value={1}>Bytes (B)</option>
+                    <option value={1000}>Kilobytes (KB)</option>
+                    <option value={1000000}>Megabytes (MB)</option>
+                    <option value={1000000000}>Gigabytes (GB)</option>
+                    <option value={1000000000000}>Terabytes (TB)</option>
+                </select>
             </div>
         </>
     );
