@@ -15,13 +15,15 @@ function Results({ inputBytes, yearDate }: ResultsProps) {
     const yearIndex = yearDate - 1956;
     const inflationIndex = 2022 - yearDate;
     const costPerTeraByte = [
-        9200000000, 8400000000, 7600000000, 3600000000, 3518620000, 2282940000,
-        1047260000, 259700000, 222350000, 185000000, 167932222, 150864444,
-        133796667, 116728889, 99661111, 82593333, 65525556, 48457778, 31390000,
-        24450000, 14970000, 9970000, 7480000, 3270000, 2790000, 1400000, 718000,
-        433000, 214000, 128000, 48400, 24800, 8800, 4070, 2590, 1220, 1060, 609,
-        406, 219, 200, 100, 70, 45, 36.7, 36.1, 35.5, 35, 28.3, 27.7, 25, 23.4,
-        18.7, 16.2, 15.25, 14.3,
+        9200000000, 8666670000, 8133330000, 7600000000, 3600000000, 3579660000,
+        3559310000, 3538970000, 3518620000, 2282940000, 1047260000, 850370000,
+        653480000, 456590000, 259700000, 241030000, 222350000, 203680000,
+        185000000, 171040000, 157070000, 143110000, 129140000, 115180000,
+        101210000, 87250000, 73280000, 59320000, 45350000, 31390000, 24450000,
+        14970000, 9970000, 7480000, 3270000, 2790000, 1400000, 718000, 433000,
+        214000, 128000, 48400, 24800, 8800, 4070, 2590, 1220, 1060, 609, 406,
+        219, 200, 100, 70, 45, 36.7, 36.1, 35.5, 35, 28.3, 27.7, 25, 23.4, 18.7,
+        16.2, 15.25, 14.3,
     ];
     const inflationMultiplier = [
         1.0331, 1.0625, 1.0699, 1.0882, 1.0993, 1.1103, 1.125, 1.1397, 1.1581,
@@ -34,7 +36,6 @@ function Results({ inputBytes, yearDate }: ResultsProps) {
         9.5151, 9.9621, 10.7594, 11.1811,
     ];
 
-    // this function will format the bytes to be more readable
     useEffect(() => {
         const units = ["B", "KB", "MB", "GB", "TB"];
         let index = 0;
@@ -62,7 +63,6 @@ function Results({ inputBytes, yearDate }: ResultsProps) {
         setCostFormatted(result);
     }, [cost]);
 
-
     useEffect(() => {
         const trillion = 1e12;
         const costWithInflation =
@@ -71,14 +71,15 @@ function Results({ inputBytes, yearDate }: ResultsProps) {
 
         const result = (inputBytes * normalizedCost).toFixed(12);
         setCost(result);
-        console.log(costWithInflation, normalizedCost, result);
     }, [inputBytes, yearDate]);
 
     return (
         <>
             <div id="results-container">
                 <p>It would cost about</p>
-                <h1>{cost == "NaN" ? "Too Insignificant" : "$" + costFormatted}</h1>
+                <h1>
+                    {cost == "NaN" ? "Too Insignificant" : "$" + costFormatted}
+                </h1>
                 <p>
                     to store {bytesFormatted} in the year of {yearDate}.
                 </p>
