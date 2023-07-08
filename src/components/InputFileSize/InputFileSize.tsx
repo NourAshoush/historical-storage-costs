@@ -6,8 +6,6 @@ interface InputFileSizeProps {
 }
 
 function InputFileSize({ onInputSize, onSelectUnit }: InputFileSizeProps) {
-
-
     return (
         <>
             <div className="container">
@@ -18,13 +16,18 @@ function InputFileSize({ onInputSize, onSelectUnit }: InputFileSizeProps) {
                     min={1}
                     placeholder="Enter File Size"
                     defaultValue={1}
-                    onChange={(e) => {onInputSize(parseInt(e.target.value));}}
+                    pattern="[0-9]*"
+                    onChange={(e) => {
+                        onInputSize(e.target.value === '' ? 0 : parseInt(e.target.value));
+                    }}
                 ></input>
 
                 <select
                     className="btn btn-secondary btn-lg dropdown-toggle"
                     id="input-unit-dropdown"
-                    onChange={(e) => {onSelectUnit(parseInt(e.target.value))}}
+                    onChange={(e) => {
+                        onSelectUnit(parseInt(e.target.value));
+                    }}
                 >
                     <option value={0} defaultChecked>
                         Select Unit

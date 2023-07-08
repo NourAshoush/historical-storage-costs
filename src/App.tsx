@@ -42,51 +42,58 @@ function App() {
 
     return (
         <>
+            {/* ------------------ HeaderBar ------------------ */}
+
             <HeaderBar onToggle={handleModeToggle} />
+
+            {/* -------------------- Title -------------------- */}
+
             <h1 id="title">
-                {activeMode === "text"
-                    ? "Cost To Store Text"
-                    : "Cost To Store Files"}
+                {activeMode === "text" && "Cost To Store Text"}
+                {activeMode === "file" && "Cost To Store Files"}
             </h1>
 
-            {activeMode === "text" ? (
-                <InputBox onNewInput={handleNewInput} />
-            ) : (
+            {/* ------------------- Inputs -------------------- */}
+
+            {activeMode === "text" && <InputBox onNewInput={handleNewInput} />}
+
+            {activeMode === "file" && (
                 <InputFileSize
                     onInputSize={handleByteInput}
                     onSelectUnit={handleUnitChange}
                 />
             )}
 
+            {/* ------------------- Slider -------------------- */}
+
             <Slider onYearChange={handleYearChange} />
 
             <h1 id="year-display">{yearDate}</h1>
 
-            {inputBytes != 0 ? (
+            {/* ------------------- Results ------------------- */}
+
+            {inputBytes != 0 && (
                 <Results inputBytes={inputBytes} yearDate={yearDate} />
-            ) : (
+            )}
+
+            {inputBytes === 0 && (
                 <>
-                    {activeMode === "text" ? (
+                    {activeMode === "text" && (
                         <p id="enter-data-label">
                             Enter text above to see how much it would cost
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
                         </p>
-                    ) : (
-                        <p id="enter-text">
-                            Enter details above to see how much it would cost
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <br></br>
+                    )}
+
+                    {activeMode === "file" && (
+                        <p id="enter-data-label">
+                            Enter file above to see how much it would cost
                         </p>
                     )}
                 </>
             )}
 
-            
+            {/* ------------------- Footer -------------------- */}
+
             <Footer />
         </>
     );
