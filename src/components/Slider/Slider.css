@@ -1,5 +1,5 @@
 #slider {
-  margin-top: 2%;
+  margin-top: 4%;
   -webkit-appearance: none;
   width: 50%;
   height: 15px;
@@ -17,4 +17,10 @@
   border-radius: 50%; 
   background: var(--main);
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  #slider {
+    width: 90%;
+  }
 }

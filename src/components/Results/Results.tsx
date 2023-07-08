@@ -76,11 +76,11 @@ function Results({ inputBytes, yearDate }: ResultsProps) {
     return (
         <>
             <div id="results-container">
-                <p>It would cost about</p>
-                <h1>
+                <p className="result-p">It would cost about</p>
+                <h1 className="result-h">
                     {cost == "NaN" ? "Too Insignificant" : "$" + costFormatted}
                 </h1>
-                <p>
+                <p className="result-p">
                     to store {bytesFormatted} in the year of {yearDate}.
                 </p>
             </div>

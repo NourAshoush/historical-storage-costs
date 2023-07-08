@@ -20,10 +20,20 @@
   color: var(--light);
 }
 
-#byte-display {
+/* #byte-display {
   margin: 0 auto;
   margin-top: 0.25%;
   width: 50%;
   text-align: center;
   font-size: 1.5rem;
+} */
+
+@media (max-width: 768px) {
+  #input-box {
+    width: 90%;
+  }
+
+  #byte-display {
+    width: 90%;
+  }
 }

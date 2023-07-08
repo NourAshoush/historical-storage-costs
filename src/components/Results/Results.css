@@ -2,3 +2,25 @@
     margin-top: 4%;
     text-align: center;
 }
+
+.result-p {
+    color: var(--main);
+}
+
+.result-h {
+    max-width: 98%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .result-p {
+        font-size: 1.25rem;
+    }
+
+    .result-h {
+        font-size: 2rem;
+    }
+}

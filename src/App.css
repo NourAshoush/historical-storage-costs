@@ -16,3 +16,14 @@
     margin-top: 4%;
     text-align: center;
 }
+
+@media (max-width: 768px) {
+  
+  #title {
+    font-size: 3rem;
+  }
+
+  #enter-data-label {
+    font-size: 1.25rem;
+  }
+}
