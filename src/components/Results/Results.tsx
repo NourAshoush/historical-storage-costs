@@ -69,8 +69,29 @@ function Results({ inputBytes, yearDate }: ResultsProps) {
             costPerTeraByte[yearIndex] * inflationMultiplier[inflationIndex];
         const normalizedCost = costWithInflation / trillion;
 
-        const result = (inputBytes * normalizedCost).toFixed(12);
-        setCost(result);
+        const result = (inputBytes * normalizedCost);
+        var resultFormatted = result.toFixed(0);
+
+        if (result < 1) {
+            resultFormatted = result.toFixed(12);
+        }
+        if (result >= 1) {
+            resultFormatted = result.toFixed(4);
+        }
+        if (result >= 10) {
+            resultFormatted = result.toFixed(3);
+        }
+        if (result >= 100) {
+            resultFormatted = result.toFixed(2);
+        }
+        if (result >= 1000) {
+            resultFormatted = result.toFixed(1);
+        }
+        if (result >= 10000) {
+            resultFormatted = result.toFixed(0);
+        }
+
+        setCost(resultFormatted);
     }, [inputBytes, yearDate]);
 
     return (

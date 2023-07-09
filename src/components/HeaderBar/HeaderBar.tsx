@@ -1,5 +1,7 @@
 import "./HeaderBar.css";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFont, faFileCode } from "@fortawesome/free-solid-svg-icons";
 
 interface HeaderBarProps {
     onToggle: (mode: string) => void;
@@ -38,14 +40,16 @@ function HeaderBar({ onToggle }: HeaderBarProps) {
                     id="cost-text"
                     onClick={() => setActiveMode("text")}
                 >
-                    Text Cost
+                    <FontAwesomeIcon icon={faFont} />
+                    &nbsp;Text Cost
                 </div>
                 <div
                     className="tab"
                     id="cost-file"
                     onClick={() => setActiveMode("file")}
                 >
-                    File Cost
+                    <FontAwesomeIcon icon={faFileCode} />
+                    &nbsp;File Cost
                 </div>
             </header>
         </>
