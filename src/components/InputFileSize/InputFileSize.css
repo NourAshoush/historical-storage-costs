@@ -1,17 +1,56 @@
+.parent-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    margin: 0 auto;
-    margin-top: 2%;
+    background: white;
+    padding: 1%;
+
+    border-radius: 10px;
+}
+
+#input-file {
+    border: none;
+}
+
+input[type="file"]::file-selector-button {
+    border-radius: 4px;
+    padding: 0 16px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #f3f4f6;
+}
+
+input[type="file"]::file-selector-button:active {
+    background-color: #e5e7eb;
+}
+
+#or {
+    margin: 0 2%;
+    font-size: 2rem;
+    color: var(--main);
 }
 
 #input-num-size {
     width: 20%;
-    border: none;
     font-size: 2rem;
     color: var(--main);
+    border: var(--main) 1px solid;
+    background: var(--background);
 }
 
 #input-num-size::placeholder {
@@ -30,13 +69,13 @@
 #input-unit-dropdown {
     margin-left: 2%;
     font-size: 2rem;
-    background-color: white;
-    border: none;
     color: var(--main);
+    border: var(--main) 1px solid;
+    background-color: var(--background);
 }
 
 @media (max-width: 768px) {
-    .container {
+    .parent-container {
         flex-direction: column;
     }
 

@@ -36,6 +36,10 @@ function App() {
         setUnit(unitInt);
     };
 
+    const handleFileInput = (file: File) => {
+        setInputBytes(file.size);
+    }
+
     useEffect(() => {
         setInputBytes(rawBytes * unit);
     }, [rawBytes, unit]);
@@ -61,6 +65,7 @@ function App() {
                 <InputFileSize
                     onInputSize={handleByteInput}
                     onSelectUnit={handleUnitChange}
+                    onInputFile={handleFileInput}
                 />
             )}
 
